@@ -36,13 +36,13 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	public Contact findById(Long id) {
-		TypedQuery<Contact> query= emf.createNamedQuery("Contact.findById", Contact.class);
+		TypedQuery<Contact> query = emf.createNamedQuery("Contact.findById", Contact.class);
 		query.setParameter("id", id);
 		return query.getSingleResult();
 	}
 
 	public Contact save(Contact contact) {
-		if (contact.getId()==null){
+		if (contact.getId() == null) {
 			log.info("Insert contact");
 			emf.persist(contact);
 		} else {
