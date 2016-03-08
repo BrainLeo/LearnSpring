@@ -46,7 +46,7 @@ public class ContactServiceImpl implements ContactService {
 			log.info("Insert contact");
 			emf.persist(contact);
 		} else {
-			log.info("Update contact");
+			log.info("Update current contact");
 			emf.merge(contact);
 		}
 		log.info("Contact saved with id: " + contact.getId());
