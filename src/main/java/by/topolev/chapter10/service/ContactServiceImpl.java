@@ -19,6 +19,8 @@ import by.topolev.chapter10.domain.Contact;
 @Repository
 @Transactional
 public class ContactServiceImpl implements ContactService {
+	
+	final static String ALL_CONTACT_NATIVE_QUERY = "select id, firstName, lastName, birthDate from contact";
 	private Log log = LogFactory.getLog(ContactServiceImpl.class);
 
 	@PersistenceContext
@@ -58,6 +60,10 @@ public class ContactServiceImpl implements ContactService {
 		Contact mergeContact = emf.merge(contact);
 		emf.remove(mergeContact);
 
+	}
+
+	public List<Contact> findAllByNativeQuery() {
+		return emf.createNativeQuery(ALL_CONTACT_NATIVE_QUERY, Contact.class).getResultList();
 	}
 
 }

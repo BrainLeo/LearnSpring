@@ -10,4 +10,5 @@ public interface ContactService {
 	public Contact findById(Long id);
 	public Contact save(Contact contact);
 	public void delete(Contact contact);
+	public List<Contact> findAllByNativeQuery();
 }
